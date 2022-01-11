@@ -38,7 +38,7 @@ const typeDefs = gql`
     "In seconds"
     durationInSeconds: Int
     "The track's approximate length to complete, in minutes"
-    length: Int
+    length: Int @deprecated(reason: "Use durationInSeconds")
     "The number of modules this track contains"
     modulesCount: Int
     "The track's complete description, can be in markdown format"
@@ -66,7 +66,7 @@ const typeDefs = gql`
     "In seconds"
     durationInSeconds: Int
     "The module's length in minutes"
-    length: Int
+    length: Int @deprecated(reason: "Use durationInSeconds")
     "The module's text-based description, can be in markdown format. In case of a video, it will be the enriched transcript"
     content: String
     "The module's video url, for video-based modules"
