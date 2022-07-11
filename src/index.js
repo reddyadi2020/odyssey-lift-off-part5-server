@@ -12,6 +12,16 @@ async function startApolloServer(typeDefs, resolvers) {
         trackAPI: new TrackAPI(),
       };
     },
+    context: async ({ req }) => { 
+  try{
+  	console.log('IP:',req.ip);
+  	console.log('IP1:',req.socket.remoteAddress);
+  	console.log('x-forwarded:',req.headers['x-forwarded-for']);
+  } catch (e) {
+      // Error connecting to auth service
+      return {};
+    }
+  	},
   });
 
   const { url, port } = await server.listen({port: process.env.PORT || 4000});
